@@ -1426,6 +1426,12 @@
         var self = this,
             canvas = self.elements.canvas;
 
+        // Reverses image dimensions after rotate
+        let oldHeight = self._originalImageHeight;
+        let oldWidth = self._originalImageWidth;
+        self._originalImageWidth = oldHeight;
+        self._originalImageHeight = oldWidth;
+
         self.data.orientation = getExifOffset(self.data.orientation, deg);
         drawCanvas(canvas, self.elements.img, self.data.orientation);
         _updateCenterPoint.call(self, true);
